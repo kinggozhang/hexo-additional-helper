@@ -8,7 +8,7 @@ it provide additional callback which enable user to customize archive item.
 ## why not list_archives? 
 official list_archives is powerful, but less customizable. you can ONLY partly control the class name of element even though you give class option like: {class:myclass} , it will extended to myclass_list, myclass_list_item, myclass_list_link...
 
-## example:
+## example(using bootstrap4):
 ```
       <%- ah_list_archives({show_count: theme.show_count, type: theme.archive_type, callback:function(name,url,cnt)
                         {
