@@ -1,4 +1,23 @@
 //all helpers will start with AH_  (Additional Helper)
+//list posts of specified tag
+//callback function with three parameters:title, url, content
+hexo.extend.helper.register('ah_list_posts', function(options){
+    const tags = this.site.tags;
+    const callback = options.callback;
+    let result='';
+    tags.map(tag => {
+        if(tag.name === options.tagname)
+        {
+            tag.posts.forEach(post=>{
+                if(callback)
+                    result += callback(post.title,this.url_for(post.path),post.content);
+                else
+                    result += '<a href="${this.url_for(post.path)}">${post.title}</a>';
+            });
+        }
+    });
+    return result;
+});
 
 //ah_list_archives based on implementation of list_archives, 
 //support one more option:callback,  which will take over constructing content of each archive item.
